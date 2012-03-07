@@ -6,6 +6,10 @@
 class OpauthAppController extends AppController {
 	
 	public function index(){
-		App::uses('Opauth', 'Vendor/Opauth');
+		$this->autoRender = false;
+		App::import('Vendor', 'Opauth/opauth');
+		$Opauth = new Opauth;
+		
+		return;
 	}
 }
