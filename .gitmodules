@@ -1,3 +1,0 @@
-[submodule "Vendor/opauth"]
-	path = Vendor/opauth
-	url = git://github.com/uzyn/opauth.git
