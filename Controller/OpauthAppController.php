@@ -4,9 +4,11 @@
  * Passes all requests for plugin to handle
  */
 class OpauthAppController extends AppController {
+	var $uses = array();
 	
 	public function index(){
 		$this->autoRender = false;
+		
 		App::import('Vendor', 'Opauth/opauth');
 		$Opauth = new Opauth;
 		
