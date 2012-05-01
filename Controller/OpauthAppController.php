@@ -1,7 +1,6 @@
 <?php
 /**
- * Opauth dummy plugin.
- * Passes all requests for plugin to handle
+ * CakePHP plugin for Opauth
  */
 class OpauthAppController extends AppController {
 	var $uses = array();
@@ -9,7 +8,7 @@ class OpauthAppController extends AppController {
 	public function index(){
 		$this->autoRender = false;
 		
-		App::import('Vendor', 'Opauth/opauth');
+		App::import('Vendor', 'opauth/lib/Opauth/Opauth');
 		$Opauth = new Opauth;
 		
 		return;
