@@ -44,7 +44,7 @@ Configure::write('Opauth.config', array(
  * eg.
  * 'strategies' => array(
  * 
- *   'facebook => array(
+ *   'facebook' => array(
  *      'app_id' => 'APP ID',
  *      'app_secret' => 'APP_SECRET'
  *    ),
