@@ -5,11 +5,10 @@ CakePHP 2.x plugin for [Opauth](https://github.com/uzyn/opauth).
 
 Opauth is a multi-provider authentication framework.
 
-Notice
-------
-**Under development.**
-**DO NOT USE**
-
+Requirements
+---------
+CakePHP 2.x
+Opauth >= 0.2 _submoduled with this package_
 
 How to use
 ----------
@@ -52,4 +51,5 @@ How to use
 
 5. Go to `http://path_to_your_cake_app/auth/facebook` to authenticate with Facebook, and similarly for other strategies that you have loaded.
 
+6. After validation, user will be redirected to `Router::url('/opauth-complete')` with validated auth response data retrievable via `Configure::read('Auth.Opauth')`.  
 
