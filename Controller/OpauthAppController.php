@@ -1,6 +1,10 @@
 <?php
 /**
  * CakePHP plugin for Opauth
+ * 
+ * @copyright		Copyright © 2012 U-Zyn Chua (http://uzyn.com)
+ * @link 			http://opauth.org
+ * @license			MIT License
  */
 class OpauthAppController extends AppController {
 	public $uses = array();
