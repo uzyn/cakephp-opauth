@@ -13,11 +13,11 @@ Notice
 
 How to use
 ----------
-1. `APP` is the directory where your CakePHP app resides, it's usually `app/` from the base of CakePHP.
-   ```bash
+1. ```bash
    cd APP/Plugin
    git clone git://github.com/uzyn/cakephp-opauth.git Opauth
    ```
+   `APP` is the directory where your CakePHP app resides, it's usually `app/` from the base of CakePHP.
 
 2. Download Opauth library as a submodule
    ```bash
@@ -30,6 +30,7 @@ How to use
    <?php
    CakePlugin::load('Opauth', array('routes' => true, 'bootstrap' => true) );
    ```
+   Overwrite any of the settings you need to change after that line.
 
 4. Load [strategies] onto `Strategy/` directory.
 
