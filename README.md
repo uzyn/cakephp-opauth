@@ -7,7 +7,7 @@ Opauth is a multi-provider authentication framework.
 
 Requirements
 ---------
-CakePHP 2.x
+CakePHP 2.x  
 Opauth >= 0.2 _submoduled with this package_
 
 How to use
