@@ -45,7 +45,7 @@ class OpauthAppController extends AppController {
 					session_start();
 				}
 				$response = $_SESSION['opauth'];
-				//unset($_SESSION['opauth']);
+				unset($_SESSION['opauth']);
 				break;
 			case 'post':
 				$response = unserialize(base64_decode( $_POST['opauth'] ));
@@ -62,7 +62,8 @@ class OpauthAppController extends AppController {
 		 * Check if it's an error callback
 		 */
 		if (array_key_exists('error', $response)){
-			echo '<strong style="color: red;">Authentication error: </strong> Opauth returns error auth response.'."<br>\n";
+			// Error
+			$response['plugin_validated'] = false;
 		}
 
 		/**
@@ -75,27 +76,40 @@ class OpauthAppController extends AppController {
 			$this->_loadOpauth();
 			
 			if (empty($response['auth']) || empty($response['timestamp']) || empty($response['signature']) || empty($response['auth']['provider']) || empty($response['auth']['uid'])){
-				echo '<strong style="color: red;">Invalid auth response: </strong>Missing key auth response components.'."<br>\n";
+				$response['error'] = array(
+					'provider' => $response['auth']['provider'],
+					'code' => 'invalid_auth_missing_components',
+					'message' => 'Invalid auth response: Missing key auth response components.'
+				);
+				$response['plugin_validated'] = false;
 			}
 			elseif (!($this->Opauth->validate(sha1(print_r($response['auth'], true)), $response['timestamp'], $response['signature'], $reason))){
-				echo '<strong style="color: red;">Invalid auth response: </strong>'.$reason.".<br>\n";
+				$response['error'] = array(
+					'provider' => $response['auth']['provider'],
+					'code' => 'invalid_auth_failed_validation',
+					'message' => 'Invalid auth response: '.$reason
+				);
+				$response['plugin_validated'] = false;
 			}
 			else{
-				echo '<strong style="color: green;">OK: </strong>Auth response is validated.'."<br>\n";
-
-				/**
-				 * It's all good. Go ahead with your application-specific authentication logic
-				 */
+				$response['plugin_validated'] = true;
 			}
 		}
-
-
+		
 		/**
-		* Auth response dump
-		*/
-		echo "<pre>";
-		print_r($response);
-		echo "</pre>";
+		 * Write after-validation response to CakePHP Configuration key: Auth.Opauth
+		 */
+		$configKey = Configure::read('Opauth._cakephp_plugin_config_key');
+		if (empty($configKey)) $configKey = 'Auth.Opauth';
+		Configure::write('Auth.Opauth', $response);
+		
+		
+		/**
+		 * Redirect user to /opauth-complete
+		 */
+		$completeUrl = Configure::read('Opauth._cakephp_plugin_complete_url');
+		if (empty($completeUrl)) $completeUrl = Router::url('/opauth-complete');
+		$this->redirect($completeUrl);
 	}
 	
 	/**
