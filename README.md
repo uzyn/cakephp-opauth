@@ -34,6 +34,18 @@ How to use
 
 4. Load [strategies] onto `Strategy/` directory.
 
+   Append configuration for strategies at your app's `Config/bootstrap.php` as follows:
+   ```php
+   <?php
+   CakePlugin::load('Opauth', array('routes' => true, 'bootstrap' => true) );
+   
+   // Using Facebook strategy as an example
+   Configure::write('Opauth.Strategy.Facebook', array(
+       'app_id' => 'YOUR FACEBOOK APP ID',
+       'app_secret' => 'YOUR FACEBOOK APP SECRET'
+   ));
+   ```
+
 5. Go to `http://path_to_your_cake_app/auth/facebook` to authenticate with Facebook, and similarly for other strategies that you have loaded.
 
 
