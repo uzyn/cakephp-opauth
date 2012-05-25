@@ -53,3 +53,23 @@ How to use
 
 6. After validation, user will be redirected to `Router::url('/opauth-complete')` with validated auth response data retrievable via `Configure::read('Auth.Opauth')`.  
 
+Issues & questions
+-------------------
+- Issues: [Github Issues](hhttps://github.com/uzyn/cakephp-opauth/issues)  
+- Discussion group: [Google Groups](https://groups.google.com/group/opauth)
+- Twitter: [@uzyn](http://twitter.com/uzyn)  
+- Email me: chua@uzyn.com  
+- IRC: **#opauth** on [Freenode](http://webchat.freenode.net/?channels=opauth&uio=d4)
+
+<p>Used this plugin in your CakePHP project? Let us know!</p>
+
+License
+---------
+The MIT License  
+Copyright © 2012 U-Zyn Chua (http://uzyn.com)
+
+
+Footnote
+---------
+U-Zyn Chua is a Principal Consultant at [gladlyCode](http://gladlycode.com), a premier PHP web development firm.  
+If you need consultation in web technologies and services, feel free to [talk to us](mailto:we@gladlycode.com).
