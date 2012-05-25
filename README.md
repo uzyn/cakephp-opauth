@@ -13,19 +13,23 @@ Notice
 
 How to use
 ----------
-1. ```bash
+1. Install this plugin for your CakePHP app.   
+   Assuming `APP` is the directory where your CakePHP app resides, it's usually `app/` from the base of CakePHP.
+
+   ```bash
    cd APP/Plugin
    git clone git://github.com/uzyn/cakephp-opauth.git Opauth
    ```
-   `APP` is the directory where your CakePHP app resides, it's usually `app/` from the base of CakePHP.
 
-2. Download Opauth library as a submodule
+2. Download Opauth library as a submodule.
+
    ```bash
    git submodule init
    git submodule update
    ```
 
 3. Add this line to the bottom of your app's `Config/bootstrap.php`:
+
    ```php
    <?php
    CakePlugin::load('Opauth', array('routes' => true, 'bootstrap' => true));
