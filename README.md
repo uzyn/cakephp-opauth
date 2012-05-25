@@ -35,7 +35,7 @@ How to use
    ```
    Overwrite any Opauth configurations you want after the above line.
 
-4. Load [strategies] onto `Strategy/` directory.
+4. Load [strategies](https://github.com/uzyn/opauth/wiki/list-of-strategies) onto `Strategy/` directory.
 
    Append configuration for strategies at your app's `Config/bootstrap.php` as follows:
    ```php
