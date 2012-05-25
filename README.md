@@ -33,7 +33,7 @@ How to use
    <?php
    CakePlugin::load('Opauth', array('routes' => true, 'bootstrap' => true));
    ```
-   Overwrite any of the settings you need to change after that line.
+   Overwrite any Opauth configurations you want after the above line.
 
 4. Load [strategies] onto `Strategy/` directory.
 
