@@ -28,7 +28,7 @@ How to use
 3. Add this line to the bottom of your app's `Config/bootstrap.php`:
    ```php
    <?php
-   CakePlugin::load('Opauth', array('routes' => true, 'bootstrap' => true) );
+   CakePlugin::load('Opauth', array('routes' => true, 'bootstrap' => true));
    ```
    Overwrite any of the settings you need to change after that line.
 
@@ -37,7 +37,7 @@ How to use
    Append configuration for strategies at your app's `Config/bootstrap.php` as follows:
    ```php
    <?php
-   CakePlugin::load('Opauth', array('routes' => true, 'bootstrap' => true) );
+   CakePlugin::load('Opauth', array('routes' => true, 'bootstrap' => true));
    
    // Using Facebook strategy as an example
    Configure::write('Opauth.Strategy.Facebook', array(
