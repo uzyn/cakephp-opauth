@@ -8,7 +8,7 @@ class OpauthAppController extends AppController {
 	public function index(){
 		$this->autoRender = false;
 		
-		App::import('Vendor', 'opauth/lib/Opauth/Opauth');
+		App::import('Vendor', 'Opauth.Opauth/lib/Opauth/Opauth');
 		$Opauth = new Opauth( Configure::read('Opauth.config') );
 		
 		return;
