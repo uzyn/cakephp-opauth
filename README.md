@@ -57,7 +57,10 @@ How to use
 
    ```php
    <?php
-   Router::connect('/opauth-complete/*', array('controller' => 'users', 'action' => 'opauth-complete'));
+   Router::connect(
+       '/opauth-complete/*', 
+       array('controller' => 'users', 'action' => 'opauth-complete')
+   );
    ```
 
 Issues & questions
