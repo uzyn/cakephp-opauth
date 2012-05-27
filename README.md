@@ -51,7 +51,14 @@ How to use
 
 5. Go to `http://path_to_your_cake_app/auth/facebook` to authenticate with Facebook, and similarly for other strategies that you have loaded.
 
-6. After validation, user will be redirected to `Router::url('/opauth-complete')` with validated auth response data retrievable via `Configure::read('Auth.Opauth')`.  
+6. After validation, user will be redirected to `Router::url('/opauth-complete')` with validated auth response data retrievable available at `$this->data`.
+
+   To route a controller to handle the response, at your app's `Config/routes.php`, add a connector, for example:
+
+   ```php
+   <?php
+   Router::connect('/opauth-complete/*', array('controller' => 'users', 'action' => 'opauth-complete'));
+   ```
 
 Issues & questions
 -------------------
