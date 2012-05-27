@@ -27,7 +27,6 @@ class OpauthAppController extends AppController {
 	 * Catch all for Opauth
 	 */
 	public function index(){
-		
 		$this->_loadOpauth();
 		$this->Opauth->run();
 		
@@ -67,7 +66,7 @@ class OpauthAppController extends AppController {
 		 */
 		if (array_key_exists('error', $response)){
 			// Error
-			$response['plugin_validated'] = false;
+			$response['validated'] = false;
 		}
 
 		/**
@@ -85,7 +84,7 @@ class OpauthAppController extends AppController {
 					'code' => 'invalid_auth_missing_components',
 					'message' => 'Invalid auth response: Missing key auth response components.'
 				);
-				$response['plugin_validated'] = false;
+				$response['validated'] = false;
 			}
 			elseif (!($this->Opauth->validate(sha1(print_r($response['auth'], true)), $response['timestamp'], $response['signature'], $reason))){
 				$response['error'] = array(
@@ -93,27 +92,28 @@ class OpauthAppController extends AppController {
 					'code' => 'invalid_auth_failed_validation',
 					'message' => 'Invalid auth response: '.$reason
 				);
-				$response['plugin_validated'] = false;
+				$response['validated'] = false;
 			}
 			else{
-				$response['plugin_validated'] = true;
+				$response['validated'] = true;
 			}
 		}
 		
 		/**
-		 * Write after-validation response to CakePHP Configuration key: Auth.Opauth
-		 */
-		$configKey = Configure::read('Opauth._cakephp_plugin_config_key');
-		if (empty($configKey)) $configKey = 'Auth.Opauth';
-		Configure::write('Auth.Opauth', $response);
-		
-		
-		/**
 		 * Redirect user to /opauth-complete
+		 * with validated response data available as POST data
+		 * retrievable at $this->data at your app's controller
 		 */
 		$completeUrl = Configure::read('Opauth._cakephp_plugin_complete_url');
 		if (empty($completeUrl)) $completeUrl = Router::url('/opauth-complete');
-		$this->redirect($completeUrl);
+		
+		
+		$CakeRequest = new CakeRequest('/opauth-complete');
+		$CakeRequest->data = $response;
+		
+		$Dispatcher = new Dispatcher();
+		$Dispatcher->dispatch( $CakeRequest, new CakeResponse() );
+		exit();
 	}
 	
 	/**
