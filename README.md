@@ -63,6 +63,8 @@ How to use
    );
    ```
 
+   Note that this CakePHP Opauth plugin already does auth response validation for you with its results available as a boolean value at `$this->data['validated']`.
+
 Issues & questions
 -------------------
 - Issues: [Github Issues](hhttps://github.com/uzyn/cakephp-opauth/issues)  
