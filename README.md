@@ -68,7 +68,6 @@ How to use
    ```php
    <?php // APP/Controller/UsersController.php:
    class UsersController extends AppController{
-   
        public function opauth_complete(){
            debug($this->data);
        }
