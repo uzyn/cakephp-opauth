@@ -63,6 +63,18 @@ How to use
    );
    ```
 
+   You can then work with the authentication data at, say `APP/Controller/UsersController.php` as follows:
+   
+   ```php
+   <?php // APP/Controller/UsersController.php:
+   class UsersController extends AppController{
+   
+       public function opauth_complete(){
+           debug($this->data);
+       }
+   }
+   ```
+
    Note that this CakePHP Opauth plugin already does auth response validation for you with its results available as a boolean value at `$this->data['validated']`.
 
 7. _(optional)_ The submoduled Opauth core library may not be of the latest build, to update to the latest:  
