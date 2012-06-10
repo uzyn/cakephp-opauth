@@ -65,6 +65,11 @@ How to use
 
    Note that this CakePHP Opauth plugin already does auth response validation for you with its results available as a boolean value at `$this->data['validated']`.
 
+7. _(optional)_ The submoduled Opauth core library may not be of the latest build, to update to the latest:  
+   ```bash
+   git submodule foreach git pull origin master
+   ```
+
 Issues & questions
 -------------------
 - Issues: [Github Issues](hhttps://github.com/uzyn/cakephp-opauth/issues)  
