@@ -59,7 +59,7 @@ How to use
    <?php
    Router::connect(
        '/opauth-complete/*', 
-       array('controller' => 'users', 'action' => 'opauth-complete')
+       array('controller' => 'users', 'action' => 'opauth_complete')
    );
    ```
 
@@ -67,8 +67,8 @@ How to use
    
    ```php
    <?php // APP/Controller/UsersController.php:
-   class UsersController extends AppController{
-       public function opauth_complete(){
+   class UsersController extends AppController {
+       public function opauth_complete() {
            debug($this->data);
        }
    }
