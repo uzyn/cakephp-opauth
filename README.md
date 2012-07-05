@@ -81,9 +81,18 @@ How to use
    git submodule foreach git pull origin master
    ```
 
+### Note:
+If your CakePHP app **does not** reside at DocumentRoot (eg. `http://localhost`), but at a directory below DocumentRoot (eg. `http://localhost/your-cake-app`),  
+add this line to your app's `APP/Config/bootstrap.php`, replacing `your-cake-app` with your actual path :
+
+```php
+<?php // APP/Config/bootstrap.php
+Configure::write('Opauth.path', '/your-cake-app/auth/');
+```
+
 Issues & questions
 -------------------
-- Issues: [Github Issues](hhttps://github.com/uzyn/cakephp-opauth/issues)  
+- Issues: [Github Issues](https://github.com/uzyn/cakephp-opauth/issues)  
 - Discussion group: [Google Groups](https://groups.google.com/group/opauth)
 - Twitter: [@uzyn](http://twitter.com/uzyn)  
 - Email me: chua@uzyn.com  
