@@ -10,6 +10,10 @@ Requirements
 CakePHP v2.x  
 Opauth >= v0.2 _(submoduled with this package)_
 
+Tutorial & sample app
+----------
+Check out [CakePHP bakery](http://bakery.cakephp.org/articles/uzyn/2012/06/25/simple_3rd-party_provider_authentication_with_opauth_plugin) for tutorial and the [sample branch](https://github.com/uzyn/cakephp-opauth/tree/sample) for a quick sample app.
+
 How to use
 ----------
 1. Install this plugin for your CakePHP app.   
@@ -92,8 +96,9 @@ Configure::write('Opauth.path', '/your-cake-app/auth/');
 
 Issues & questions
 -------------------
+- Discussion group: [Google Groups](https://groups.google.com/group/opauth)  
+  _This is the primary channel for support, especially for user questions._
 - Issues: [Github Issues](https://github.com/uzyn/cakephp-opauth/issues)  
-- Discussion group: [Google Groups](https://groups.google.com/group/opauth)
 - Twitter: [@uzyn](http://twitter.com/uzyn)  
 - Email me: chua@uzyn.com  
 - IRC: **#opauth** on [Freenode](http://webchat.freenode.net/?channels=opauth&uio=d4)
