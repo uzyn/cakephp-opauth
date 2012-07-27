@@ -47,8 +47,11 @@ class OpauthAppController extends AppController {
 				if (!isset($_SESSION)){
 					session_start();
 				}
-				$response = $_SESSION['opauth'];
-				unset($_SESSION['opauth']);
+				
+				if(isset($_SESSION['opauth'])) {
+					$response = $_SESSION['opauth'];
+					unset($_SESSION['opauth']);
+				}
 				break;
 			case 'post':
 				$response = unserialize(base64_decode( $_POST['opauth'] ));
@@ -64,7 +67,7 @@ class OpauthAppController extends AppController {
 		/**
 		 * Check if it's an error callback
 		 */
-		if (array_key_exists('error', $response)){
+		if (isset($response) && is_array($response) && array_key_exists('error', $response)) {
 			// Error
 			$response['validated'] = false;
 		}
