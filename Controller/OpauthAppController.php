@@ -48,8 +48,10 @@ class OpauthAppController extends AppController {
 		*/
 		switch(Configure::read('Opauth.callback_transport')){	
 			case 'session':
-				$response = $this->Session->read('opauth');
-				$this->Session->delete('opauth');
+				if($this->Session->check('opauth') == true) {}
+					$response = $this->Session->read('opauth');
+					$this->Session->delete('opauth');
+				}
 				break;
 			case 'post':
 				$response = unserialize(base64_decode( $_POST['opauth'] ));
