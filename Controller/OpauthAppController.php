@@ -7,6 +7,8 @@
  * @license			MIT License
  */
 class OpauthAppController extends AppController {
+	public $components = array('Session');
+	
 	public $uses = array();
 	
 	/**
@@ -27,6 +29,8 @@ class OpauthAppController extends AppController {
 	 * Catch all for Opauth
 	 */
 	public function index(){
+		$this->Session->id(); // Hack to make the plugin use the Cake session
+		
 		$this->_loadOpauth();
 		$this->Opauth->run();
 		
@@ -44,13 +48,9 @@ class OpauthAppController extends AppController {
 		*/
 		switch(Configure::read('Opauth.callback_transport')){	
 			case 'session':
-				if (!isset($_SESSION)){
-					session_start();
-				}
-				
-				if(isset($_SESSION['opauth'])) {
-					$response = $_SESSION['opauth'];
-					unset($_SESSION['opauth']);
+				if($this->Session->check('opauth') == true) {
+					$response = $this->Session->read('opauth');
+					$this->Session->delete('opauth');
 				}
 				break;
 			case 'post':
