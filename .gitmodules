@@ -1,0 +1,3 @@
+[submodule "Plugin/Opauth"]
+	path = Plugin/Opauth
+	url = git://github.com/uzyn/cakephp-opauth.git
