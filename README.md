@@ -111,7 +111,7 @@ The MIT License
 Copyright © 2012 U-Zyn Chua (http://uzyn.com)
 
 
-Footnote
+Consultation
 ---------
-U-Zyn Chua is a Principal Consultant at [gladlyCode](http://gladlycode.com), a premier PHP web development firm.  
-If you need consultation in web technologies and services, feel free to [talk to us](mailto:we@gladlycode.com).
+U-Zyn Chua is a Principal Consultant at [Zynesis Consulting](http://zynesis.sg), specializing in CakePHP.
+Looking for PHP web development solutions or consultation? [Drop me a mail](mailto:chua@uzyn.com).
