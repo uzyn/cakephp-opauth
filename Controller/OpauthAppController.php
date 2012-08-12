@@ -44,7 +44,7 @@ class OpauthAppController extends AppController {
 		*/
 		switch(Configure::read('Opauth.callback_transport')){	
 			case 'session':
-				if (!isset($_SESSION)){
+				if (!session_id()){
 					session_start();
 				}
 				
