@@ -110,8 +110,25 @@ License
 The MIT License  
 Copyright © 2012 U-Zyn Chua (http://uzyn.com)
 
+Package building instructions
+--------------
+Instructions for making into a nice zipped package for download.
+
+```bash
+git checkout master
+git submodule update --init --recursive
+
+rm -rf `find . -type d -name .git`
+
+cd ..
+mv cakephp-opauth Opauth
+
+zip -mr Opauth-CakePHP-plugin-X.Y.Z.zip Opauth
+```
+
+
 
 Consultation
 ---------
-U-Zyn Chua is a Principal Consultant at [Zynesis Consulting](http://zynesis.sg), specializing in CakePHP.
+U-Zyn Chua is a Principal Consultant at [Zynesis Consulting](http://zynesis.sg), specializing in CakePHP.  
 Looking for PHP web development solutions or consultation? [Drop me a mail](mailto:chua@uzyn.com).
