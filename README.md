@@ -47,3 +47,29 @@ License
 ---------
 The MIT License  
 Copyright © 2012 U-Zyn Chua (http://uzyn.com)
+
+Package building instructions
+--------------
+Instructions for making into a nice zipped package for download.
+
+```bash
+git checkout sample-app
+git submodule update --init --recursive
+
+git clone git://github.com/uzyn/opauth-facebook.git Plugin/Opauth/Strategy/Facebook
+git clone git://github.com/uzyn/opauth-twitter.git Plugin/Opauth/Strategy/Twitter
+git clone git://github.com/uzyn/opauth-google.git Plugin/Opauth/Strategy/Google
+git clone git://github.com/uzyn/opauth-openid.git Plugin/Opauth/Strategy/OpenID
+
+rm -rf `find . -type d -name .git`
+
+cd ..
+mv cakephp-opauth app
+
+zip -mr Opauth-CakePHP-sample-app-X.Y.Z.zip app
+```
+
+Consultation
+---------
+U-Zyn Chua is a Principal Consultant at [Zynesis Consulting](http://zynesis.sg), specializing in CakePHP.  
+Looking for PHP web development solutions or consultation? [Drop me a mail](mailto:chua@uzyn.com).
