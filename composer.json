@@ -14,12 +14,17 @@
 	],
 	"require": {
 		"php": ">=5.2.0",
-		"composer/installers": "*",
+		"composer/installers": "dev-master",
 		"opauth/opauth": ">=0.2.0"
 	},
 	"suggest": {
 		"opauth/facebook": "Allows Facebook authentication",
 		"opauth/google": "Allows Google authentication",
 		"opauth/twitter": "Allows Twitter authentication"
+	},
+	"extra": {
+		"installer-paths": {
+			"Plugin/Opauth/": ["uzyn/cakephp-opauth"]
+		}
 	}
 }
