@@ -14,7 +14,7 @@
 	],
 	"require": {
 		"php": ">=5.2.0",
-		"composer/installers": "dev-master@dev",
+		"composer/installers": "*",
 		"opauth/opauth": ">=0.2.0"
 	},
 	"suggest": {
@@ -26,5 +26,6 @@
 		"installer-paths": {
 			"Plugin/Opauth/": ["uzyn/cakephp-opauth"]
 		}
-	}
+	},
+	"minimum-stability": "dev"
 }
