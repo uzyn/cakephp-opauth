@@ -14,7 +14,7 @@
 	],
 	"require": {
 		"php": ">=5.2.0",
-		"composer/installers": "dev-master",
+		"composer/installers": "dev-master@dev",
 		"opauth/opauth": ">=0.2.0"
 	},
 	"suggest": {
