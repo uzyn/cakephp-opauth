@@ -29,8 +29,8 @@ How to use
    ```bash
    {
        "require": {
-           "uzyn/cakephp-opauth": "dev-composer",
-           "composer/installers": "@dev"
+           "uzyn/cakephp-opauth": "*",
+           "composer/installers": "*"
        },
        "extra": {
            "installer-paths": {
