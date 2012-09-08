@@ -21,10 +21,5 @@
 		"opauth/facebook": "Allows Facebook authentication",
 		"opauth/google": "Allows Google authentication",
 		"opauth/twitter": "Allows Twitter authentication"
-	},
-	"extra": {
-		"installer-paths": {
-			"Plugin/Opauth/": ["uzyn/cakephp-opauth"]
-		}
 	}
 }
