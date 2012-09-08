@@ -5,10 +5,13 @@ CakePHP 2.x plugin for [Opauth](https://github.com/uzyn/opauth).
 
 Opauth is a multi-provider authentication framework.
 
+This branch is for cakephp-composer with [**Composer**](http://getcomposer.org) support.  
+For conventional non-Composer installation of cakephp-opauth, either check out the [master branch](https://github.com/uzyn/cakephp-opauth/tree/master) or [download](https://github.com/uzyn/cakephp-opauth/downloads) the CakePHP plugin directly.
+
 Requirements
 ---------
 CakePHP v2.x  
-Opauth >= v0.2 _(submoduled with this package)_
+Composer
 
 Tutorial & sample app
 ----------
@@ -16,22 +19,29 @@ Check out [CakePHP bakery](http://bakery.cakephp.org/articles/uzyn/2012/06/25/si
 
 How to use
 ----------
-1. Install this plugin for your CakePHP app.   
-   Assuming `APP` is the directory where your CakePHP app resides, it's usually `app/` from the base of CakePHP.
+1. Setup Composer  
+   If you do not yet have Composer installed on your system, we recommend [CakePHP Composer plugin](https://github.com/uzyn/cakephp-composer) for easy installation. [[Tutorial](http://bakery.cakephp.org/articles/uzyn/2012/06/20/composer_plugin_for_cakephp) from Bakery]
+   
+1. Install this plugin for your CakePHP app, via [uzyn/cakephp-opauth](http://packagist.org/packages/uzyn/cakephp-opauth) from Packagist.
+
+   Add these to your `composer.json` residing at your CakePHP's `app/` directory
 
    ```bash
-   cd APP/Plugin
-   git clone git://github.com/uzyn/cakephp-opauth.git Opauth
+   {
+       "require": {
+           "uzyn/cakephp-opauth": "dev-composer",
+           "composer/installers": "@dev"
+       },
+       "extra": {
+           "installer-paths": {
+               "Plugin/Opauth/": ["uzyn/cakephp-opauth"]
+           }
+       }
+   }
    ```
+   Run `composer install`.
 
-2. Download Opauth library as a submodule.
-
-   ```bash
-   git submodule init
-   git submodule update
-   ```
-
-3. Add this line to the bottom of your app's `Config/bootstrap.php`:
+1. Add this line to the bottom of your app's `Config/bootstrap.php`:
 
    ```php
    <?php
@@ -39,7 +49,13 @@ How to use
    ```
    Overwrite any Opauth configurations you want after the above line.
 
-4. Load [strategies](https://github.com/uzyn/opauth/wiki/list-of-strategies) onto `Strategy/` directory.
+1. Load [strategies](https://github.com/uzyn/opauth/wiki/list-of-strategies) directly via Composer.
+
+   Using [Facebook strategy](http://packagist.org/packages/opauth/facebook) as an example.
+   
+   ```bash
+   composer require opauth/facebook:*
+   ```
 
    Append configuration for strategies at your app's `Config/bootstrap.php` as follows:
    ```php
@@ -53,9 +69,9 @@ How to use
    ));
    ```
 
-5. Go to `http://path_to_your_cake_app/auth/facebook` to authenticate with Facebook, and similarly for other strategies that you have loaded.
+1. Go to `http://path_to_your_cake_app/auth/facebook` to authenticate with Facebook, and similarly for other strategies that you have loaded.
 
-6. After validation, user will be redirected to `Router::url('/opauth-complete')` with validated auth response data retrievable available at `$this->data`.
+1. After validation, user will be redirected to `Router::url('/opauth-complete')` with validated auth response data retrievable available at `$this->data`.
 
    To route a controller to handle the response, at your app's `Config/routes.php`, add a connector, for example:
 
@@ -80,10 +96,6 @@ How to use
 
    Note that this CakePHP Opauth plugin already does auth response validation for you with its results available as a boolean value at `$this->data['validated']`.
 
-7. _(optional)_ The submoduled Opauth core library may not be of the latest build, to update to the latest:  
-   ```bash
-   git submodule foreach git pull origin master
-   ```
 
 ### Note:
 If your CakePHP app **does not** reside at DocumentRoot (eg. `http://localhost`), but at a directory below DocumentRoot (eg. `http://localhost/your-cake-app`),  
