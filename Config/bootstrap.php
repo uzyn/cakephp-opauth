@@ -7,6 +7,12 @@
  * CakePlugin::load('Opauth', array('routes' => true, 'bootstrap' => true));
  */
 
+/**
+ * Composer's autoload
+ */		
+if (file_exists(APP.'Vendor'.DS.'autoload.php')) {
+	App::import('Vendor', 'autoload');
+}
 
 /**
  * Path where Opauth is accessed.
