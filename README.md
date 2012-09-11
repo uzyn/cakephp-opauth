@@ -13,6 +13,13 @@ Requirements
 CakePHP v2.x  
 Composer
 
+Using [Composer](http://getcomposer.org/)?
+-----------
+You can install CakePHP-Opauth plugin directly from Composer at [uzyn/cakephp-opauth](http://packagist.org/packages/uzyn/cakephp-opauth).  
+It works for Opauth strategies too!
+
+View notes and Composer-enabled plugin code at [composer branch](https://github.com/uzyn/cakephp-opauth/tree/composer).
+
 Tutorial & sample app
 ----------
 Check out [CakePHP bakery](http://bakery.cakephp.org/articles/uzyn/2012/06/25/simple_3rd-party_provider_authentication_with_opauth_plugin) for tutorial and the [sample branch](https://github.com/uzyn/cakephp-opauth/tree/sample) for a quick sample app.
