@@ -8,12 +8,21 @@ App::import('Vendor', 'Opauth.Opauth/lib/Opauth/Opauth');
 class OpauthHandler implements CakeEventListener {
 
 /**
+ * True when already handled, used to avoid multiple runs, for instance with CakeErrorController
+ *
+ * @var boolean
+ */
+	protected $_handled = false;
+
+/**
  * Executed method on Controller.initialize event
  *
  * @param CakeEvent $event
  */
 	public function auth(CakeEvent $event) {
-		$this->handle($event->subject()->request);
+		if (!$this->_handled) {
+			$this->handle($event->subject()->request);
+		}
 	}
 
 /**
@@ -35,6 +44,7 @@ class OpauthHandler implements CakeEventListener {
 		}
 
 		$request->data = $this->callback($request);
+		$this->_handled = true;
 	}
 
 /**
@@ -53,7 +63,7 @@ class OpauthHandler implements CakeEventListener {
 
 		if ($this->_missingKey($data)){
 			$data['error'] = array(
-				'provider' => $data['auth']['provider'],
+				'provider' => !empty($data['auth']['provider']) ? $data['auth']['provider'] : 'unknown',
 				'code' => 'invalid_auth_missing_components',
 				'message' => 'Invalid auth response: Missing key auth response components.'
 			);
