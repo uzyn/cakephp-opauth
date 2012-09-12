@@ -23,11 +23,6 @@ Configure::write('Opauth.path', '/auth/');
 Configure::write('Opauth.debug', (Configure::read('debug') !== 0));
 
 /**
- * Callback URL: redirected to after authentication, successful or otherwise
- */
-Configure::write('Opauth.callback_url', Configure::read('Opauth.path').'callback');
-
-/**
  * Callback transport, for sending of $auth response
  *
  * 'session': Default. Works best unless callback_url is on a different domain than Opauth
