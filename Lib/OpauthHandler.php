@@ -40,13 +40,27 @@ class OpauthHandler implements CakeEventListener {
 		}
 
 		if ($request->params['pass'][0] !== 'callback') {
-			$this->getOpauth()->run();
+			$this->run($request->params['pass'][0]);
 		}
 
 		$request->data = $this->callback($request);
 		$this->_handled = true;
 	}
 
+/**
+ * Runs Opauth strategy
+ * This will cause external redirect
+ *
+ * @param string $strategy Passed request parameter
+ * @return void
+ * @throws BadRequestException
+ */
+	public function run($strategy) {
+		if (!in_array($strategy, $this->strategies())) {
+			throw new BadRequestException('Invalid strategy');
+		}
+		$this->getOpAuth()->run();
+	}
 /**
  * Receives auth response and does validation
  *
@@ -126,6 +140,15 @@ class OpauthHandler implements CakeEventListener {
  */
 	public function getOpauth(){
 		return new Opauth(Configure::read('Opauth'), false);
+	}
+
+/**
+ * Returns a list of configured strategies
+ *
+ * @return array strategies
+ */
+	public function strategies() {
+		return array_map('strtolower', array_keys((array)Configure::read('Opauth.Strategy')));
 	}
 
 /**
