@@ -23,7 +23,7 @@ class OpauthHandler implements CakeEventListener {
  * @return void
  */
 	public function handle(CakeRequest $request) {
-		if (strpos($request->here, Configure::read('Opauth.path')) !== 0) {
+		if ($request->url == '/' || strpos($request->here, Configure::read('Opauth.path')) !== 0) {
 			return false;
 		}
 		if (empty($request->params['pass'][0])){
