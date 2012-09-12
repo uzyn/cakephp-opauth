@@ -21,7 +21,7 @@ class OpauthHandler implements CakeEventListener {
  */
 	public function auth(CakeEvent $event) {
 		if (!$this->_handled) {
-			$this->handle($event->subject()->request);
+			$this->_handle($event->subject()->request);
 		}
 	}
 
@@ -31,7 +31,7 @@ class OpauthHandler implements CakeEventListener {
  * @param CakeRequest $request
  * @return void
  */
-	public function handle(CakeRequest $request) {
+	protected function _handle(CakeRequest $request) {
 		if ($request->url == '/' || strpos($request->here, Configure::read('Opauth.path')) !== 0) {
 			return false;
 		}
@@ -40,10 +40,10 @@ class OpauthHandler implements CakeEventListener {
 		}
 
 		if ($request->params['pass'][0] !== 'callback') {
-			$this->run($request->params['pass'][0]);
+			$this->_run($request->params['pass'][0]);
 		}
 
-		$request->data = $this->callback($request);
+		$request->data = $this->_callback($request);
 		$this->_handled = true;
 	}
 
@@ -55,7 +55,7 @@ class OpauthHandler implements CakeEventListener {
  * @return void
  * @throws BadRequestException
  */
-	public function run($strategy) {
+	protected function _run($strategy) {
 		if (!in_array($strategy, $this->strategies())) {
 			throw new BadRequestException('Invalid strategy');
 		}
@@ -67,7 +67,7 @@ class OpauthHandler implements CakeEventListener {
  * @param CakeRequest $request
  * @return array callback data
  */
-	public function callback(CakeRequest $request){
+	protected function _callback(CakeRequest $request){
 		$data = (array)$this->_readResponse($request);
 		$data['validated'] = false;
 
@@ -125,12 +125,13 @@ class OpauthHandler implements CakeEventListener {
  * @return boolean
  */
 	protected function _missingKey($data) {
-		return
+		return (
 			empty($data['auth']) ||
 			empty($data['timestamp']) ||
 			empty($data['signature']) ||
 			empty($data['auth']['provider']) ||
-			empty($data['auth']['uid']);
+			empty($data['auth']['uid'])
+		);
 	}
 
 /**
