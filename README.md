@@ -5,9 +5,11 @@ CakePHP 2.x plugin for [Opauth](https://github.com/uzyn/opauth).
 
 Opauth is a multi-provider authentication framework.
 
+**Development branch** for refactoring with CakeEvent. (Thanks @ceeram)
+
 Requirements
 ---------
-CakePHP v2.x  
+CakePHP >= v2.1  
 Opauth >= v0.2 _(submoduled with this package)_
 
 Using [Composer](http://getcomposer.org/)?
