@@ -126,6 +126,9 @@ class OpauthAppController extends AppController {
 	 * @param boolean $run Whether Opauth should auto run after initialization.
 	 */
 	protected function _loadOpauth($config = null, $run = false){
+		// Update some dependent configs in case it is overwritten at app-level
+		Configure::write('Opauth.callback_url', Configure::read('Opauth.path').'callback');
+		
 		if (is_null($config)){
 			$config = Configure::read('Opauth');
 		}
