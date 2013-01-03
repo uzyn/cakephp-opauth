@@ -99,7 +99,6 @@ add this line to your app's `APP/Config/bootstrap.php`, replacing `your-cake-app
 ```php
 <?php // APP/Config/bootstrap.php
 Configure::write('Opauth.path', '/your-cake-app/auth/');
-Configure::write('Opauth.callback_url', '/your-cake-app/auth/callback');
 ```
 
 Issues & questions
