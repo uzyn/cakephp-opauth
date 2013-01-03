@@ -127,9 +127,9 @@ Issues & questions
 License
 ---------
 The MIT License  
-Copyright © 2012 U-Zyn Chua (http://uzyn.com)
+Copyright © 2012-2013 U-Zyn Chua (http://uzyn.com)
 
 Consultation
 ---------
-U-Zyn Chua is a Principal Consultant at [Zynesis Consulting](http://zynesis.com), specializing in CakePHP.  
+U-Zyn Chua is the Principal Consultant at [Zynesis Consulting](http://zynesis.com), specializing in CakePHP.  
 Looking for PHP web development solutions or consultation? [Drop me a mail](mailto:chua@uzyn.com).
