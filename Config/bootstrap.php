@@ -36,12 +36,14 @@ Configure::write('Opauth.callback_url', Configure::read('Opauth.path').'callback
 /**
  * Callback transport, for sending of $auth response
  * 
- * 'session': Default. Works best unless callback_url is on a different domain than Opauth
+ * 'session': Works best unless callback_url is on a different domain than Opauth
  * 'post'   : Works cross-domain, but relies on availability of client-side JavaScript.
+ *          : Default for CakePHP plugin contrary to Opauth core as session may cause issues on some 
+ *          : cases of CakePHP's session handling
  * 'get'    : Works cross-domain, but may be limited or corrupted by browser URL length limit 
  *            (eg. IE8/IE9 has 2083-char limit)
  */
-Configure::write('Opauth.callback_transport', 'session');
+Configure::write('Opauth.callback_transport', 'post');
 
 /**
  * A random string used for signing of $auth response.
