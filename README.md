@@ -37,12 +37,6 @@ How to use
    {
        "require": {
            "uzyn/cakephp-opauth": "*",
-           "composer/installers": "*"
-       },
-       "extra": {
-           "installer-paths": {
-               "Plugin/Opauth/": ["uzyn/cakephp-opauth"]
-           }
        }
    }
    ```
