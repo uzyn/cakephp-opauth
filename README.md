@@ -36,7 +36,7 @@ How to use
    ```bash
    {
        "require": {
-           "uzyn/cakephp-opauth": "*",
+           "uzyn/cakephp-opauth": "*"
        }
    }
    ```
