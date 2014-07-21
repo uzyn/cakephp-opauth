@@ -17,5 +17,7 @@ class OpauthController extends OpauthAppController {
 			$this->Security->validatePost = false;
 			$this->Security->csrfCheck = false;	
 		}
+		// allow parent (e.g. AppController) to have a say!
+		parent::beforeFilter();
 	}
 }
