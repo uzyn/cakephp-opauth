@@ -81,3 +81,10 @@ Configure::write('Opauth.strategy_dir', dirname(dirname(__FILE__)).'/Strategy/')
  *
  */
 Configure::write('Opauth.Strategy', array());
+
+/**
+ * AuthComponent Class Name
+ * Use to allow access to Opauth methods for users of AuthComponent
+ * eg. for Auth $this->Auth->allow() is used
+ */
+Configure::write('Opauth.AuthComponent','Auth');
