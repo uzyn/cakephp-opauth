@@ -136,6 +136,9 @@ class OpauthAppController extends AppController {
 		}
 		
 		App::import('Vendor', 'Opauth.Opauth/lib/Opauth/Opauth');
+		if (!class_exists('Opauth')) {
+			throw new CakeException('Unable to load Opauth class.  [app/Plugin/Opauth/Vendor/Opauth]  Did you load submodules?');
+		}
 		$this->Opauth = new Opauth( $config, $run );
 	}
 }
