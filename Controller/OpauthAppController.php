@@ -54,10 +54,10 @@ class OpauthAppController extends AppController {
 				}
 				break;
 			case 'post':
-				$response = unserialize(base64_decode( $_POST['opauth'] ));
+				$response = json_decode(base64_decode( $_POST['opauth'], true));
 				break;
 			case 'get':
-				$response = unserialize(base64_decode( $_GET['opauth'] ));
+				$response = json_decode(base64_decode( $_GET['opauth'], true));
 				break;
 			default:
 				echo '<strong style="color: red;">Error: </strong>Unsupported callback_transport.'."<br>\n";
